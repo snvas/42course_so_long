@@ -6,12 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:49:16 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 01:57:15 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/14 22:27:45 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
-
+#include "libft.h"
 
 static void	free_ptr(char **ptr)
 {

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_update.c                                       :+:      :+:    :+:   */
+/*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 17:33:36 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 17:09:05 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 16:29:26 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/14 23:30:58 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static void	map_updater(t_game *game)
+void	build_map(t_game *game)
 {
 	int		i;
 	int		j;
@@ -28,28 +28,22 @@ static void	map_updater(t_game *game)
 			else if (game->map[i][j] == '0')
 				img_draw(game, game->img_space, j, i);
 			else if (game->map[i][j] == 'C')
-				img_draw(game, game->img_collect, j, i);
+				map_init_hook_c(game, j, i);
 			else if (game->map[i][j] == 'E')
 				img_draw(game, game->img_exit, j, i);
 			else if (game->map[i][j] == 'P')
-				map_update_hook_p(game, j, i);
+				map_init_hook_p(game, j, i);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	map_update(int keycode, t_game *game)
+void	t_map_init(t_map *m)
 {
-	if (keycode == KEY_W || keycode == XK_Up)
-		move_up(game);
-	else if (keycode == KEY_A || keycode == XK_Left)
-		move_left(game);
-	else if (keycode == KEY_S || keycode == XK_Down)
-		move_down(game);
-	else if (keycode == KEY_D || keycode == XK_Right)
-		move_right(game);
-	else
-		return ;
-	map_updater(game);
+	m->col = 0;
+	m->row = 0;
+	m->exit_count = 0;
+	m->space_count = 0;
+	m->collectable_count = 0;
 }

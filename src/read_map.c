@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_gen.c                                          :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:44:37 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/13 22:12:06 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/14 22:56:23 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-char	**map_gen(char *path_to_file)
+char	**read_map(char *path_to_file)
 {
 	char	**result;
 	char	*holder;

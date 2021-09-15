@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_draw.c                                         :+:      :+:    :+:   */
+/*   build_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:42:14 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 22:19:22 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 17:00:45 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/14 23:15:29 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	img_draw(t_game *game, void *img, int x, int y)
+void	build_game(t_game *game)
 {
-	mlx_put_image_to_window
-		(game->mlx, game->win, img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+	get_window_size(game);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window
+		(game->mlx, game->win_width, game->win_height, "so_long");
+	game->moves = 0;
+	game->collected = 0;
+	game->collectable = 0;
 }

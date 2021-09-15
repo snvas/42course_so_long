@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init.c                                         :+:      :+:    :+:   */
+/*   map_resume.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:29:26 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/13 21:23:39 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/14 18:06:25 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/14 21:05:12 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	map_init(t_game *game)
+int	map_resume(t_game *game)
 {
 	int		i;
 	int		j;
@@ -28,13 +28,14 @@ void	map_init(t_game *game)
 			else if (game->map[i][j] == '0')
 				img_draw(game, game->img_space, j, i);
 			else if (game->map[i][j] == 'C')
-				map_init_hook_c(game, j, i);
+				img_draw(game, game->img_collect, j, i);
 			else if (game->map[i][j] == 'E')
 				img_draw(game, game->img_exit, j, i);
 			else if (game->map[i][j] == 'P')
-				map_init_hook_p(game, j, i);
+				map_update_hook_p(game, j, i);
 			j++;
 		}
 		i++;
 	}
+	return (0);
 }

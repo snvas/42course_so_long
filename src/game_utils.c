@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 17:03:34 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 00:17:24 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/14 21:51:10 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,13 @@ void	get_window_size(t_game *game)
 
 int	display_info(t_game *game)
 {
-	int	i;
-
-	i = 0;
-	while (game->map[i])
-	{
-		printf("%s\n", game->map[i]);
-		i++;
-	}
-	printf("collectable: %d\n", game->collectable);
-	printf("collected: %d\n", game->collected);
-	printf("player: X: %d | Y: %d \n", game->x, game->y);
-	printf("moves: %d\n", game->moves);
+	printf("Moviments: %d\n", game->moves);
 	return (1);
 }
 
 int	key_press(int keycode, t_game *game)
 {
-	if (keycode == KEY_ESC)
+	if (keycode == KEY_ESC || keycode == KEY_Q)
 		exit_game(game);
 	else
 	{

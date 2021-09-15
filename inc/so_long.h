@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/14 23:05:49 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/14 23:32:29 by snovaes          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -37,25 +49,19 @@ typedef struct s_map
 {
 	int	col;
 	int	row;
-	int	e_count;
-	int	s_count;
-	int	c_count;
+	int	exit_count;
+	int	space_count;
+	int	collectable_count;
 }	t_map;
-
-# ifndef OPEN_MAX
-#  define OPEN_MAX 256
-# endif
-
-# ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1
-# endif
 
 # define DEBUG 1
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_DESTROY_NOTIFY 17
+# define  X_EVENT_FOCUS_IN 9
 
 # define KEY_ESC 65307
+# define KEY_Q 113
 # define KEY_W 119
 # define KEY_A 97
 # define KEY_S 115
@@ -69,23 +75,21 @@ typedef struct s_map
 
 # define SPRITE_SIZE 40
 
-char	**map_gen(char *path_to_file);
-char	*get_next_line(int fd);
-
-int		map_check(char **map);
-void	map_init(t_game *game);
-void	init_game(t_game *game);
+char	**read_map(char *path_to_file);
+int		check_map(char **map, char *file);
+void	build_game(t_game *game);
 void	get_window_size(t_game *game);
-void	img_init(t_game *game);
+void	build_map(t_game *game);
+void	build_img(t_game *game);
 void	img_draw(t_game *game, void *img, int x, int y);
 int		key_press(int keycode, t_game *game);
 void	map_update(int keycode, t_game *game);
 void	change_position(char *pos, char *next_pos, char val, char new_val);
 
-void	hold_w(t_game *game);
-void	hold_a(t_game *game);
-void	hold_s(t_game *game);
-void	hold_d(t_game *game);
+void	move_up(t_game *game);
+void	move_left(t_game *game);
+void	move_down(t_game *game);
+void	move_right(t_game *game);
 
 void	map_init_hook_c(t_game *game, int j, int i);
 void	map_init_hook_p(t_game *game, int j, int i);
@@ -96,5 +100,7 @@ void	ft_free_ptr(void **ptr);
 void	free_map(char **map);
 void	free_game(t_game *game);
 int		exit_game(t_game *game);
-
+void	game_hook(t_game *game);
+int		map_resume(t_game *game);
+void	t_map_init(t_map *m);
 #endif

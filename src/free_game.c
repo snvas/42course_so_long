@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_fire.c                                        :+:      :+:    :+:   */
+/*   free_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 00:09:32 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 00:31:48 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/14 22:19:03 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ void	ft_free_ptr(void **ptr)
 	}
 }
 
-
-void free_map(char **map)
+void	free_map(char **map)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (map[i])
@@ -35,7 +34,7 @@ void free_map(char **map)
 	ft_free_ptr((void *)&map);
 }
 
-void free_game(t_game *game)
+void	free_game(t_game *game)
 {
 	mlx_destroy_image(game->mlx, game->img_space);
 	mlx_destroy_image(game->mlx, game->img_wall);

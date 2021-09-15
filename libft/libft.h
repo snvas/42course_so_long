@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/17 15:24:56 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/12 20:26:03 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/14 22:27:19 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,21 @@
 # include <stddef.h>
 # include <ctype.h>
 
+# ifndef OPEN_MAX
+#  define OPEN_MAX 256
+# endif
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }	t_list;
+
+char	*get_next_line(int fd);
 
 void	*ft_memset(void *s, int c, size_t n);
 
