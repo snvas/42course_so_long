@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render_map.c                                       :+:      :+:    :+:   */
+/*   update_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 18:06:25 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 16:34:01 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:46:25 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
-int	render_map(t_game *game)
+static void	updater_map(t_game *game)
 {
 	int		height;
 	int		width;
@@ -37,5 +37,19 @@ int	render_map(t_game *game)
 		}
 		height++;
 	}
-	return (0);
+}
+
+void	update_map(int keycode, t_game *game)
+{
+	if (keycode == KEY_W || keycode == XK_Up)
+		move_up(game);
+	else if (keycode == KEY_A || keycode == XK_Left)
+		move_left(game);
+	else if (keycode == KEY_S || keycode == XK_Down)
+		move_down(game);
+	else if (keycode == KEY_D || keycode == XK_Right)
+		move_right(game);
+	else
+		return ;
+	updater_map(game);
 }

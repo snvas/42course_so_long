@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_draw.c                                         :+:      :+:    :+:   */
+/*   change_position.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:42:14 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 23:45:13 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 17:03:34 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 18:45:09 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
-void	draw_img(t_game *game, void *img, int x, int y)
+void	change_position(char *pos, char *next_pos, char val, char new_val)
 {
-	mlx_put_image_to_window
-		(game->mlx, game->win, img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+	*pos = val;
+	*next_pos = new_val;
 }

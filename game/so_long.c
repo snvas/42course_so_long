@@ -6,11 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:36:18 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 01:28:38 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:46:16 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 int	main(int argc, char **argv)
 {

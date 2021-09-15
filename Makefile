@@ -24,21 +24,21 @@ SOURCES_FILES	=	read_map.c \
 					free_game.c \
 					so_long.c \
 
-SOURCES_DIR		=	src
+SOURCES_DIR		=	./game
 
 SOURCES			=	$(addprefix $(SOURCES_DIR)/, $(SOURCES_FILES))
 
 OBJECTS			= 	$(SOURCES:.c=.o)
 
-INCLUDES		=	inc
+INCLUDES		=	./includes
 
 NAME			=	so_long
 
 CC				=	gcc
 RM				=	rm -f
 
-CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3 -fsanitize=address
-#CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3
+#CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3 -fsanitize=address
+CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3
 MLXFLAGS		=	-L. -lXext -L. -lX11
 
 .c.o:

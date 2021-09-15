@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_window.c                                     :+:      :+:    :+:   */
+/*   hook_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 17:00:45 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 16:30:57 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/15 00:06:25 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 18:45:32 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
-void	build_window(t_game *game)
+void	hook_game(t_game *game)
 {
-	get_window_size(game);
-	game->mlx = mlx_init();
-	game->win = mlx_new_window
-		(game->mlx, game->win_width, game->win_height, "so_long");
-	game->moves = 0;
-	game->to_collect = 0;
-	game->myitens = 0;
+	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L << 0, &press_key, game);
+	mlx_hook(game->win, X_EVENT_DESTROY_NOTIFY, 0, &exit_game, game);
+	mlx_hook(game->win, X_EVENT_FOCUS_IN, 1L << 21, &render_map, game);
 }

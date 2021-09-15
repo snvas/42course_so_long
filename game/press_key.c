@@ -6,11 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 00:02:27 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 17:03:12 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:46:00 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 int	message_display(t_game *game)
 {

@@ -6,11 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:50:22 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 16:31:18 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:46:49 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 void	build_img(t_game *game)
 {

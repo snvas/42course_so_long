@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   build_map.c                                        :+:      :+:    :+:   */
+/*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:29:26 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 16:57:15 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/14 18:06:25 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 18:46:12 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
-void	build_map(t_game *game)
+int	render_map(t_game *game)
 {
 	int		height;
 	int		width;
@@ -28,22 +28,14 @@ void	build_map(t_game *game)
 			else if (game->map[height][width] == '0')
 				draw_img(game, game->img_ground, width, height);
 			else if (game->map[height][width] == 'C')
-				hook_map_c(game, width, height);
+				draw_img(game, game->img_collect, width, height);
 			else if (game->map[height][width] == 'E')
 				draw_img(game, game->img_exit, width, height);
 			else if (game->map[height][width] == 'P')
-				hook_map_p(game, width, height);
+				hook_render_map_p(game, width, height);
 			width++;
 		}
 		height++;
 	}
-}
-
-void	t_map_init(t_map *m)
-{
-	m->width = 0;
-	m->height = 0;
-	m->exit_count = 0;
-	m->ground_count = 0;
-	m->to_collect_count = 0;
+	return (0);
 }

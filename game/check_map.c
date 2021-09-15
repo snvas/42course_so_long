@@ -6,11 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:32:35 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 17:00:00 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:45:12 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 static int	check_chars(char **map)
 {

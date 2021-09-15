@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hook_game.c                                        :+:      :+:    :+:   */
+/*   draw_img.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/15 00:06:25 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 15:46:48 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 16:42:14 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 18:45:16 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
-void	hook_game(t_game *game)
+void	draw_img(t_game *game, void *img, int x, int y)
 {
-	mlx_hook(game->win, X_EVENT_KEY_PRESS, 1L << 0, &press_key, game);
-	mlx_hook(game->win, X_EVENT_DESTROY_NOTIFY, 0, &exit_game, game);
-	mlx_hook(game->win, X_EVENT_FOCUS_IN, 1L << 21, &render_map, game);
+	mlx_put_image_to_window
+		(game->mlx, game->win, img, x * SPRITE_SIZE, y * SPRITE_SIZE);
 }

@@ -6,11 +6,11 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 20:46:28 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 16:41:01 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 18:45:36 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 void	hook_map_c(t_game *game, int width, int height)
 {
