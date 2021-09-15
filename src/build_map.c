@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init.c                                         :+:      :+:    :+:   */
+/*   build_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:29:26 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 23:30:58 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 00:11:50 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,15 @@ void	build_map(t_game *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				img_draw(game, game->img_wall, j, i);
+				draw_img(game, game->img_wall, j, i);
 			else if (game->map[i][j] == '0')
-				img_draw(game, game->img_space, j, i);
+				draw_img(game, game->img_space, j, i);
 			else if (game->map[i][j] == 'C')
-				map_init_hook_c(game, j, i);
+				hook_map_c(game, j, i);
 			else if (game->map[i][j] == 'E')
-				img_draw(game, game->img_exit, j, i);
+				draw_img(game, game->img_exit, j, i);
 			else if (game->map[i][j] == 'P')
-				map_init_hook_p(game, j, i);
+				hook_map_p(game, j, i);
 			j++;
 		}
 		i++;

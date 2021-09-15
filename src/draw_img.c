@@ -1,26 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_init_utils.c                                   :+:      :+:    :+:   */
+/*   img_draw.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 20:46:28 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 22:19:14 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 16:42:14 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/14 23:45:13 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	map_init_hook_c(t_game *game, int j, int i)
+void	draw_img(t_game *game, void *img, int x, int y)
 {
-	img_draw(game, game->img_collect, j, i);
-	game->collectable++;
-}
-
-void	map_init_hook_p(t_game *game, int j, int i)
-{
-	img_draw(game, game->img_player, j, i);
-	game->x = j;
-	game->y = i;
+	mlx_put_image_to_window
+		(game->mlx, game->win, img, x * SPRITE_SIZE, y * SPRITE_SIZE);
 }

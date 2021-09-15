@@ -5,23 +5,24 @@ MINILIBX_PATH	=	./mlx
 MINILIBX		=	$(MINILIBX_PATH)/libmlx.a
 
 SOURCES_FILES	=	read_map.c \
-					build_game.c \
+					get_window_size.c \
+					build_window.c \
 					build_img.c \
+					check_map.c \
 					build_map.c \
-					game_utils.c \
-					img_draw.c \
+					draw_img.c \
+					press_key.c \
+					hooks_map.c \
+					hook_game.c \
+					change_position.c \
 					move_left.c \
 					move_right.c \
 					move_up.c \
 					move_down.c \
-					check_map.c \
-					so_long.c \
-					map_init_utils.c \
-					map_update.c \
-					map_update_utils.c \
+					update_map.c \
+					render_map.c \
 					free_game.c \
-					map_resume.c \
-					game_hook.c \
+					so_long.c \
 
 SOURCES_DIR		=	src
 
@@ -36,8 +37,8 @@ NAME			=	so_long
 CC				=	gcc
 RM				=	rm -f
 
-#CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3 -fsanitize=address
-CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3
+CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3 -fsanitize=address
+#CFLAGS			=	-Wall -Wextra -Werror -no-pie -g3
 MLXFLAGS		=	-L. -lXext -L. -lX11
 
 .c.o:
@@ -69,11 +70,8 @@ re:				fclean all
 run:
 				$(MAKE) && ./so_long "maps/map.ber"
 
-runv:
-				$(MAKE) && valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/map.ber
-
-runiv:
-				$(MAKE) && valgrind -q --leak-check=full --show-leak-kinds=all --track-origins=yes ./so_long maps/map.berr
+runval:
+				$(MAKE) && valgrind ./so_long maps/map.ber
 
 norm:
 				norminette $(SOURCES) ./inc/so_long.h

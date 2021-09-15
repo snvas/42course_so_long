@@ -1,40 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   build_game.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 15:36:18 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 01:28:38 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/13 17:00:45 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 01:27:35 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-int	main(int argc, char **argv)
+void	build_window(t_game *game)
 {
-	t_game	game;
-
-	if (argc == 2)
-	{
-		game.map = read_map(argv[1]);
-		if (check_map(game.map, argv[1]))
-		{
-			build_window(&game);
-			build_img(&game);
-			build_map(&game);
-			hook_game(&game);
-			mlx_loop(game.mlx);
-		}
-		else
-		{
-			printf("Error!\nInvalid map!\n");
-			free_map(game.map);
-			exit(0);
-		}
-	}
-	else
-		printf("No map specified.\n");
-	return (0);
+	get_window_size(game);
+	game->mlx = mlx_init();
+	game->win = mlx_new_window
+		(game->mlx, game->win_width, game->win_height, "so_long");
+	game->moves = 0;
+	game->collected = 0;
+	game->collectable = 0;
 }

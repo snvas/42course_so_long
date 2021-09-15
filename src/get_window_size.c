@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   img_draw.c                                         :+:      :+:    :+:   */
+/*   get_window_size.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 16:42:14 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 22:19:22 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/15 00:00:56 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 00:01:23 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-void	img_draw(t_game *game, void *img, int x, int y)
+void	get_window_size(t_game *game)
 {
-	mlx_put_image_to_window
-		(game->mlx, game->win, img, x * SPRITE_SIZE, y * SPRITE_SIZE);
+	int	i;
+
+	i = 0;
+	game->win_width = ft_strlen(game->map[i]) * SPRITE_SIZE;
+	game->win_height = 0;
+	while (game->map[i])
+	{
+		game->win_height++;
+		i++;
+	}
+	game->win_height *= SPRITE_SIZE;
 }

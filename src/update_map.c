@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_update.c                                       :+:      :+:    :+:   */
+/*   update_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/13 17:33:36 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 17:09:05 by snovaes          ###   ########.fr       */
+/*   Created: 2021/09/14 18:06:25 by snovaes           #+#    #+#             */
+/*   Updated: 2021/09/15 00:10:01 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static void	map_updater(t_game *game)
+static void	updater_map(t_game *game)
 {
 	int		i;
 	int		j;
@@ -24,22 +24,22 @@ static void	map_updater(t_game *game)
 		while (game->map[i][j])
 		{
 			if (game->map[i][j] == '1')
-				img_draw(game, game->img_wall, j, i);
+				draw_img(game, game->img_wall, j, i);
 			else if (game->map[i][j] == '0')
-				img_draw(game, game->img_space, j, i);
+				draw_img(game, game->img_space, j, i);
 			else if (game->map[i][j] == 'C')
-				img_draw(game, game->img_collect, j, i);
+				draw_img(game, game->img_collect, j, i);
 			else if (game->map[i][j] == 'E')
-				img_draw(game, game->img_exit, j, i);
+				draw_img(game, game->img_exit, j, i);
 			else if (game->map[i][j] == 'P')
-				map_update_hook_p(game, j, i);
+				hook_render_map_p(game, j, i);
 			j++;
 		}
 		i++;
 	}
 }
 
-void	map_update(int keycode, t_game *game)
+void	update_map(int keycode, t_game *game)
 {
 	if (keycode == KEY_W || keycode == XK_Up)
 		move_up(game);
@@ -51,5 +51,5 @@ void	map_update(int keycode, t_game *game)
 		move_right(game);
 	else
 		return ;
-	map_updater(game);
+	updater_map(game);
 }
