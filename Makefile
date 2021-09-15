@@ -74,6 +74,6 @@ runval:
 				$(MAKE) && valgrind ./so_long maps/map.ber
 
 norm:
-				norminette $(SOURCES) ./inc/so_long.h
+				norminette $(SOURCES) ./includes/so_long.h ./libft
 
 .PHONY:			all clean fclean re libft minilibx
