@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/15 00:02:27 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 19:07:15 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 19:09:37 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	press_key(int keycode, t_game *game)
 {
 	if (keycode == KEY_ESC || keycode == KEY_Q)
 	{
-		printf("Game Closed!!\nI am sad you are leaving!");
+		printf("Game Closed!!\nI am sad you are leaving!\n");
 		exit_game(game);
 	}
 	else
