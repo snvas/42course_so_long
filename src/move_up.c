@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:09:37 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 22:18:01 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 16:20:55 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	move_up(t_game *game)
 {
-	int		x;
-	int		y;
+	int		w;
+	int		h;
 
-	x = game->x;
-	y = game->y;
-	if (game->map[y - 1][x] == '0')
+	w = game->x;
+	h = game->y;
+	if (game->map[h - 1][w] == '0')
 	{
-		change_position(&game->map[y][x], &game->map[y - 1][x], '0', 'P');
+		change_position(&game->map[h][w], &game->map[h - 1][w], '0', 'P');
 		game->moves++;
 	}
-	else if (game->map[y - 1][x] == 'C')
+	else if (game->map[h - 1][w] == 'C')
 	{
-		change_position(&game->map[y][x], &game->map[y - 1][x], '0', 'P');
+		change_position(&game->map[h][w], &game->map[h - 1][w], '0', 'P');
 		game->moves++;
-		game->collected++;
+		game->myitens++;
 	}
-	else if (game->map[y - 1][x] == 'E'
-		&& (game->collected == game->collectable))
+	else if (game->map[h - 1][w] == 'E' && (game->myitens == game->to_collect))
 	{
-		change_position(&game->map[y][x], &game->map[y - 1][x], '0', 'E');
+		change_position(&game->map[h][w], &game->map[h - 1][w], '0', 'E');
 		game->moves++;
+		message_win(game);
 		exit_game(game);
 	}
 	else

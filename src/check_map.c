@@ -6,87 +6,89 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 18:32:35 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 23:12:44 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 17:00:00 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
 
-static int	valid_map(char **map)
+static int	check_chars(char **map)
 {
-	int	i;
-	int	j;
+	int	height;
+	int	width;
 
-	i = 0;
-	while (map[i])
+	height = 0;
+	while (map[height])
 	{
-		j = 0;
-		while (map[i][j])
+		width = 0;
+		while (map[height][width])
 		{
-			if (map[i][j] != '0' && map[i][j] != '1' && map[i][j] != 'C'
-				&& map[i][j] != 'E' && map[i][j] != 'P')
+			if (map[height][width] != '0' && map[height][width] != '1'
+				&& map[height][width] != 'C'
+				&& map[height][width] != 'E'
+				&& map[height][width] != 'P')
 				return (0);
-			j++;
+			width++;
 		}
-		i++;
+		height++;
 	}
 	return (1);
 }
 
-static int	valid_positions(char **map, t_map *m)
+static int	check_positions(char **map, t_map *m)
 {
-	int	i;
-	int	j;
+	int	height;
+	int	width;
 
-	i = 0;
-	while (map[i])
+	height = 0;
+	while (map[height])
 	{
-		j = 0;
-		while (map[i][j])
+		width = 0;
+		while (map[height][width])
 		{
-			if (map[i][j] == 'E')
+			if (map[height][width] == 'E')
 				m->exit_count++;
-			if (map[i][j] == 'P')
-				m->space_count++;
-			if (map[i][j] == 'C')
-				m->collectable_count++;
-			j++;
+			if (map[height][width] == 'P')
+				m->ground_count++;
+			if (map[height][width] == 'C')
+				m->to_collect_count++;
+			width++;
 		}
-		i++;
+		height++;
 	}
-	if (m->exit_count != 1 || m->space_count != 1 || m->collectable_count == 0)
+	if (m->exit_count != 1 || m->ground_count != 1 || m->to_collect_count == 0)
 		return (0);
 	return (1);
 }
 
-static int	valid_walls(char **map, t_map *m)
+static int	check_walls(char **map, t_map *m)
 {
-	int	i;
-	int	j;
+	int	height;
+	int	width;
 
-	m->col = ft_strlen(map[0]);
-	m->row = 0;
-	while (map[m->row])
-		m->row++;
-	i = 0;
-	while (map[i])
+	m->width = ft_strlen(map[0]);
+	m->height = 0;
+	while (map[m->height])
+		m->height++;
+	height = 0;
+	while (map[height])
 	{
-		j = 0;
-		while (map[i][j])
+		width = 0;
+		while (map[height][width])
 		{
-			if (map[0][j] != '1' || map[m->row - 1][j] != '1'
-				|| map[i][0] != '1' || map[i][m->col - 1] != '1')
+			if (map[0][width] != '1' || map[m->height - 1][width] != '1'
+				|| map[height][0] != '1' || map[height][m->width - 1] != '1')
 				return (0);
-			j++;
+			width++;
 		}
-		if (j != m->col)
+		if (width != m->width)
 			return (0);
-		i++;
+		height++;
 	}
 	return (1);
 }
 
-static int	valid_extension(char *file)
+static int	isber(char *file)
 {
 	char	*ext;
 
@@ -104,8 +106,8 @@ int	check_map(char **map, char *file)
 
 	t_map_init(&m);
 	if (map)
-		if (valid_positions(map, &m) && valid_walls(map, &m)
-			&& valid_map(map) && valid_extension(file))
+		if (isber(file) && check_chars(map)
+			&& check_positions(map, &m) && check_walls(map, &m))
 			return (1);
 	return (0);
 }

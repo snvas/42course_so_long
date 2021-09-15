@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 23:05:49 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 01:44:55 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 16:57:36 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ typedef struct s_game
 {
 	void	*mlx;
 	void	*win;
-	void	*img_space;
+	void	*img_ground;
 	void	*img_wall;
 	void	*img_collect;
 	void	*img_exit;
@@ -41,20 +41,20 @@ typedef struct s_game
 	int		win_width;
 	int		win_height;
 	int		moves;
-	int		collected;
-	int		collectable;
+	int		myitens;
+	int		to_collect;
 }	t_game;
 
 typedef struct s_map
 {
-	int	col;
-	int	row;
+	int	width;
+	int	height;
 	int	exit_count;
-	int	space_count;
-	int	collectable_count;
+	int	ground_count;
+	int	to_collect_count;
 }	t_map;
 
-# define DEBUG 1
+# define DEBUG 0
 
 # define X_EVENT_KEY_PRESS 2
 # define X_EVENT_DESTROY_NOTIFY 17
@@ -67,7 +67,7 @@ typedef struct s_map
 # define KEY_S 115
 # define KEY_D 100
 
-# define IMG_SPACE "img/grass.xpm"
+# define IMG_GROUND "img/grass.xpm"
 # define IMG_WALL "img/tree.xpm"
 # define IMG_COLLECT "img/rocks.xpm"
 # define IMG_EXIT "img/exit.xpm"
@@ -84,6 +84,7 @@ void	build_map(t_game *game);
 void	build_img(t_game *game);
 void	draw_img(t_game *game, void *img, int x, int y);
 int		press_key(int keycode, t_game *game);
+int		message_win(t_game *game);
 void	update_map(int keycode, t_game *game);
 void	change_position(char *pos, char *next_pos, char val, char new_val);
 
@@ -92,9 +93,9 @@ void	move_left(t_game *game);
 void	move_down(t_game *game);
 void	move_right(t_game *game);
 
-void	hook_map_c(t_game *game, int j, int i);
-void	hook_map_p(t_game *game, int j, int i);
-void	hook_render_map_p(t_game *game, int j, int i);
+void	hook_map_c(t_game *game, int width, int height);
+void	hook_map_p(t_game *game, int width, int height);
+void	hook_render_map_p(t_game *game, int width, int height);
 void	hook_game(t_game *game);
 int		render_map(t_game *game);
 

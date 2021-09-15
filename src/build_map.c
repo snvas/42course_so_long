@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:29:26 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/15 00:11:50 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 16:57:15 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,36 @@
 
 void	build_map(t_game *game)
 {
-	int		i;
-	int		j;
+	int		height;
+	int		width;
 
-	i = 0;
-	while (game->map[i])
+	height = 0;
+	while (game->map[height])
 	{
-		j = 0;
-		while (game->map[i][j])
+		width = 0;
+		while (game->map[height][width])
 		{
-			if (game->map[i][j] == '1')
-				draw_img(game, game->img_wall, j, i);
-			else if (game->map[i][j] == '0')
-				draw_img(game, game->img_space, j, i);
-			else if (game->map[i][j] == 'C')
-				hook_map_c(game, j, i);
-			else if (game->map[i][j] == 'E')
-				draw_img(game, game->img_exit, j, i);
-			else if (game->map[i][j] == 'P')
-				hook_map_p(game, j, i);
-			j++;
+			if (game->map[height][width] == '1')
+				draw_img(game, game->img_wall, width, height);
+			else if (game->map[height][width] == '0')
+				draw_img(game, game->img_ground, width, height);
+			else if (game->map[height][width] == 'C')
+				hook_map_c(game, width, height);
+			else if (game->map[height][width] == 'E')
+				draw_img(game, game->img_exit, width, height);
+			else if (game->map[height][width] == 'P')
+				hook_map_p(game, width, height);
+			width++;
 		}
-		i++;
+		height++;
 	}
 }
 
 void	t_map_init(t_map *m)
 {
-	m->col = 0;
-	m->row = 0;
+	m->width = 0;
+	m->height = 0;
 	m->exit_count = 0;
-	m->space_count = 0;
-	m->collectable_count = 0;
+	m->ground_count = 0;
+	m->to_collect_count = 0;
 }

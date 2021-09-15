@@ -6,7 +6,7 @@
 /*   By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 00:09:32 by snovaes           #+#    #+#             */
-/*   Updated: 2021/09/14 22:19:03 by snovaes          ###   ########.fr       */
+/*   Updated: 2021/09/15 16:28:04 by snovaes          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	free_map(char **map)
 
 void	free_game(t_game *game)
 {
-	mlx_destroy_image(game->mlx, game->img_space);
+	mlx_destroy_image(game->mlx, game->img_ground);
 	mlx_destroy_image(game->mlx, game->img_wall);
 	mlx_destroy_image(game->mlx, game->img_collect);
 	mlx_destroy_image(game->mlx, game->img_exit);
