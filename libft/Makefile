@@ -6,7 +6,7 @@
 #    By: snovaes <snovaes@student.42sp.org.br>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/26 23:38:05 by snovaes           #+#    #+#              #
-#    Updated: 2021/09/14 22:25:25 by snovaes          ###   ########.fr        #
+#    Updated: 2021/11/12 18:13:34 by snovaes          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ BONUSOBJS = $(BONUSSRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
+$(NAME): $(OBJECTS) bonus
 		ar rc $(NAME) $(OBJECTS)
 		ranlib $(NAME)
 
